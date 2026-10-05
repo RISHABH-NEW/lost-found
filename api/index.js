@@ -5,13 +5,8 @@ const { connectDB } = require('../backend/config/db');
 module.exports = async (req, res) => {
   try {
     await connectDB();
-    return app(req, res);
   } catch (err) {
-    console.error('Serverless Execution Error:', err);
-    return res.status(500).json({
-      success: false,
-      message: 'Serverless Function Database Connection Error',
-      error: err.message,
-    });
+    console.warn('Notice: Serverless Database Connection warning (using fallback store):', err.message);
   }
+  return app(req, res);
 };

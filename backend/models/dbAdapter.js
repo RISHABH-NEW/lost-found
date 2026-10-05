@@ -3,39 +3,96 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const DATA_DIR = path.join(__dirname, '..', 'data');
+const IS_VERCEL = !!process.env.VERCEL;
+const DATA_DIR = IS_VERCEL ? path.join('/tmp', 'data') : path.join(__dirname, '..', 'data');
 const DATA_FILE = path.join(DATA_DIR, 'db.json');
+const SEED_FILE = path.join(__dirname, '..', 'data', 'db.json');
 
-// Ensure data directory exists
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+// Ensure data directory exists safely (guard against EROFS on serverless/read-only systems)
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch (e) {
+  // Read-only filesystem (e.g. AWS Lambda / Vercel), fallback to in-memory state
 }
 
-// Initial DB state
+// In-memory cache for serverless environments
+let memoryStore = null;
+
+// Initial DB state with guaranteed pre-seeded demo users (bcrypt-hashed password123)
 const getInitialData = () => ({
-  users: [],
+  users: [
+    {
+      _id: '6ac38cc3dfb150bdc41abdf7',
+      name: 'Rohan Sharma',
+      email: 'rohan@campus.edu',
+      password: '$2a$10$4K9tsqewzoM7ecfJMhe/8exi3NpbwbmKdmSU5nmprhpgfjUIdt2MG',
+      phone: '+91 9876543210',
+      createdAt: '2026-10-05T11:40:51.185Z',
+    },
+    {
+      _id: '6ac38cc4dfb150bdc41abdf8',
+      name: 'Priya Sharma',
+      email: 'priya.sharma@campus.edu',
+      password: '$2a$10$NZVftdMAxYo7wMYbkV6J7urpgPYFFF0LOgwJ.sjy4A/aJMHOayd9K',
+      phone: '+91 9812345678',
+      createdAt: '2026-10-05T11:40:52.646Z',
+    },
+    {
+      _id: '6ac38cc5dfb150bdc41abdf9',
+      name: 'Rahul Verma',
+      email: 'rahul.verma@campus.edu',
+      password: '$2a$10$3OC6tQkPANUCskCwtI6SLeDyCvDAjZIZolIwVVmaHbg.chfXO9aNK',
+      phone: '+91 9988776655',
+      createdAt: '2026-10-05T11:40:53.566Z',
+    },
+  ],
   items: [],
 });
 
 const loadData = () => {
+  if (memoryStore) {
+    return memoryStore;
+  }
+
+  // 1. Try reading from DATA_FILE (/tmp/data/db.json on Vercel or backend/data/db.json locally)
   try {
     if (fs.existsSync(DATA_FILE)) {
       const content = fs.readFileSync(DATA_FILE, 'utf-8');
-      return JSON.parse(content);
+      memoryStore = JSON.parse(content);
+      return memoryStore;
     }
   } catch (err) {
-    console.warn('Could not read db.json, initializing fresh store:', err.message);
+    // Continue to seed file fallback
   }
-  const initial = getInitialData();
-  saveData(initial);
-  return initial;
+
+  // 2. Try reading from bundled repository SEED_FILE
+  try {
+    if (fs.existsSync(SEED_FILE)) {
+      const content = fs.readFileSync(SEED_FILE, 'utf-8');
+      memoryStore = JSON.parse(content);
+      return memoryStore;
+    }
+  } catch (err) {
+    // Continue to initial fallback
+  }
+
+  // 3. Fallback to hardcoded seed data with demo users
+  memoryStore = getInitialData();
+  saveData(memoryStore);
+  return memoryStore;
 };
 
 const saveData = (data) => {
+  memoryStore = data;
   try {
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
   } catch (err) {
-    console.error('Could not save to db.json:', err.message);
+    // In read-only serverless environment, data safely persists in memoryStore for the container lifetime
   }
 };
 

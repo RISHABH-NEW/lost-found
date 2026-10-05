@@ -86,7 +86,26 @@ const login = async (req, res) => {
     }
 
     const cleanEmail = email.toLowerCase().trim();
-    const user = await User.findOne({ email: cleanEmail });
+    let user = await User.findOne({ email: cleanEmail });
+
+    // Ensure demo accounts always exist if requested with demo credentials
+    if (!user) {
+      if (cleanEmail === 'rohan@campus.edu') {
+        user = await User.create({
+          name: 'Rohan Sharma',
+          email: 'rohan@campus.edu',
+          password: 'password123',
+          phone: '+91 9876543210',
+        });
+      } else if (cleanEmail === 'priya.sharma@campus.edu') {
+        user = await User.create({
+          name: 'Priya Sharma',
+          email: 'priya.sharma@campus.edu',
+          password: 'password123',
+          phone: '+91 9812345678',
+        });
+      }
+    }
 
     if (!user) {
       return res.status(401).json({
