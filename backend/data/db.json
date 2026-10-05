@@ -63,9 +63,39 @@
       "password": "$2a$10$z1eZPIxKSuRZawgOxYf0L.M25CZrChQ8pVxAb8aVpFndlsrWXTtpS",
       "phone": "+91 9876500002",
       "createdAt": "2026-10-05T11:50:49.453Z"
+    },
+    {
+      "_id": "6ac3a2b06ba22724090363b7",
+      "name": "Rohan Sharma",
+      "email": "student_1791206064217@campus.edu",
+      "password": "$2a$10$AWOoif4fb4wSZZzJsuVqn.MgzazKzdbfy7kAXwEu97kZSAieYPU7.",
+      "phone": "+91 9876500001",
+      "createdAt": "2026-10-05T13:14:24.580Z"
+    },
+    {
+      "_id": "6ac3a2b16ba22724090363b8",
+      "name": "Amit Patel",
+      "email": "other_1791206065229@campus.edu",
+      "password": "$2a$10$X4plESRJ0xvrMv6wAA8HV.fAAThJofcVbLPRUrfyMln/91fm3HMvi",
+      "phone": "+91 9876500002",
+      "createdAt": "2026-10-05T13:14:25.537Z"
     }
   ],
   "items": [
+    {
+      "_id": "6ac3a2b16ba22724090363ba",
+      "title": "Apple AirPods Case (White)",
+      "description": "Found on the grass near sports ground pavilion bench.",
+      "type": "Found",
+      "category": "Electronics",
+      "location": "Sports Ground",
+      "date": "2026-10-05T13:14:25.570Z",
+      "imagePath": "/uploads/airpods_case-1791206065598-903966.png",
+      "status": "Active",
+      "postedBy": "6ac3a2b06ba22724090363b7",
+      "createdAt": "2026-10-05T13:14:25.613Z",
+      "updatedAt": "2026-10-05T13:14:25.613Z"
+    },
     {
       "_id": "6ac39410b1feb4d07950650d",
       "title": "HELLO",
