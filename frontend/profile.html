@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile | Lost & Found Campus Portal</title>
+  <meta name="description" content="View and manage your student profile and contact information.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar"></header>
+
+  <main>
+    <div class="container-narrow">
+      <div style="margin-bottom: 2rem;">
+        <div class="section-badge">Account Settings</div>
+        <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem; color: #fff;">
+          Student Profile
+        </h1>
+        <p style="color: var(--text-muted); font-size: 1rem;">
+          Keep your contact information updated so finders and peers can reach you when your item is found.
+        </p>
+      </div>
+
+      <div class="card" style="padding: 2.5rem; margin-bottom: 2rem;">
+        <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 2rem; flex-wrap: wrap;">
+          <div class="user-avatar" id="profile-avatar" style="width: 5rem; height: 5rem; font-size: 2rem; font-weight: 800;">
+            U
+          </div>
+          <div>
+            <h2 id="profile-name-display" style="font-size: 1.75rem; margin-bottom: 0.25rem; color: #fff;">Loading...</h2>
+            <div id="profile-email-display" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.4rem;">student@campus.edu</div>
+            <span class="badge badge-found" style="font-size: 0.78rem;">✓ Verified Campus Account</span>
+          </div>
+        </div>
+
+        <form id="profile-form">
+          <div class="form-group">
+            <label for="profile-name" class="form-label">Full Name <span class="required">*</span></label>
+            <input type="text" id="profile-name" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="profile-email" class="form-label">College Email Address</label>
+            <input type="email" id="profile-email" class="form-control" disabled style="opacity: 0.7; cursor: not-allowed;">
+            <div class="form-helper">College email address is bound to your student ID and cannot be changed.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="profile-phone" class="form-label">Contact Phone Number <span class="required">*</span></label>
+            <input type="tel" id="profile-phone" class="form-control" required>
+            <div class="form-helper" style="color: #6ee7b7;">
+              🛡️ Protected: Only logged-in students can view your phone number for handover.
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <button type="submit" class="btn btn-primary btn-lg" style="flex: 2;">
+              Save Profile Changes
+            </button>
+            <button type="button" class="btn btn-secondary btn-lg" onclick="logoutUser()" style="flex: 1; color: #fda4af;">
+              Sign Out
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Security Info Card -->
+      <div class="card" style="padding: 1.75rem; background: rgba(14, 25, 48, 0.6);">
+        <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 0.65rem;">🔒 Account Security &amp; Privacy</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">
+          Your password is cryptographic-grade encrypted using bcrypt with salt rounds. Session tokens are signed via JWT. Your phone number is never exposed in public search results and is protected from web crawlers.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Universal Footer -->
+  <footer class="footer" id="footer"></footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/toast.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/navbar.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (!requireAuth()) return;
+
+      const user = getCurrentUser();
+      if (user) {
+        document.getElementById('profile-name').value = user.name || '';
+        document.getElementById('profile-email').value = user.email || '';
+        document.getElementById('profile-phone').value = user.phone || '';
+        document.getElementById('profile-name-display').textContent = user.name || 'Student';
+        document.getElementById('profile-email-display').textContent = user.email || '';
+        document.getElementById('profile-avatar').textContent = (user.name || 'U').charAt(0).toUpperCase();
+      }
+
+      // Fetch fresh profile from backend
+      try {
+        const fresh = await authAPI.getMe();
+        if (fresh && fresh.user) {
+          setStoredUser(fresh.user);
+          document.getElementById('profile-name').value = fresh.user.name || '';
+          document.getElementById('profile-email').value = fresh.user.email || '';
+          document.getElementById('profile-phone').value = fresh.user.phone || '';
+          document.getElementById('profile-name-display').textContent = fresh.user.name || 'Student';
+          document.getElementById('profile-email-display').textContent = fresh.user.email || '';
+          document.getElementById('profile-avatar').textContent = (fresh.user.name || 'U').charAt(0).toUpperCase();
+        }
+      } catch (err) {
+        console.warn('Could not refresh profile:', err);
+      }
+
+      // Handle profile update form
+      const form = document.getElementById('profile-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('profile-name').value.trim();
+        const phone = document.getElementById('profile-phone').value.trim();
+
+        if (!name || !phone) {
+          showToast('Name and phone are required.', 'error');
+          return;
+        }
+
+        try {
+          const res = await authAPI.updateProfile({ name, phone });
+          setStoredUser(res.user);
+          showToast(res.message || 'Profile updated successfully!', 'success');
+          document.getElementById('profile-name-display').textContent = res.user.name;
+          document.getElementById('profile-avatar').textContent = res.user.name.charAt(0).toUpperCase();
+        } catch (err) {
+          showToast(err.message, 'error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

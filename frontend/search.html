@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search &amp; Filter Campus Items | Lost & Found Portal</title>
+  <meta name="description" content="Search through lost and found belongings across college campus zones and categories.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar"></header>
+
+  <main>
+    <div class="container-wide">
+      <!-- Page Header -->
+      <div style="margin-bottom: 2rem;">
+        <div class="section-badge">Database Search</div>
+        <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem; color: #fff;">
+          Search Campus Belongings
+        </h1>
+        <p style="color: var(--text-muted); font-size: 1rem;">
+          Filter by category, college zone, item type, or type keywords to find matching reports in real time.
+        </p>
+      </div>
+
+      <!-- Search & Filters Control Card -->
+      <div class="search-filter-card">
+        <!-- Top Search Row -->
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search-input" class="form-control" placeholder="Search by item name, description, brand, or keywords...">
+          </div>
+
+          <!-- Type Filter Tabs (All / Lost / Found) -->
+          <div class="filter-tabs" style="min-width: 280px;">
+            <button type="button" class="filter-tab active" data-type="">All Items</button>
+            <button type="button" class="filter-tab" data-type="Lost">⚠️ Lost</button>
+            <button type="button" class="filter-tab" data-type="Found">🔍 Found</button>
+          </div>
+        </div>
+
+        <!-- Filter Dropdowns Grid -->
+        <div class="filter-grid">
+          <div>
+            <label class="form-label" style="font-size: 0.8rem; margin-bottom: 0.25rem;">Category</label>
+            <select id="category-filter" class="form-control" style="font-size: 0.88rem; padding: 0.55rem 0.85rem;">
+              <option value="">All Categories</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Documents & IDs">Documents &amp; IDs</option>
+              <option value="Books & Stationery">Books &amp; Stationery</option>
+              <option value="Keys & Wallets">Keys &amp; Wallets</option>
+              <option value="Bags & Backpacks">Bags &amp; Backpacks</option>
+              <option value="Water Bottles">Water Bottles</option>
+              <option value="Clothing & Accessories">Clothing &amp; Accessories</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="form-label" style="font-size: 0.8rem; margin-bottom: 0.25rem;">Campus Location</label>
+            <select id="location-filter" class="form-control" style="font-size: 0.88rem; padding: 0.55rem 0.85rem;">
+              <option value="">All Campus Zones</option>
+              <option value="Central Library">Central Library</option>
+              <option value="Computer Lab 2">Computer Lab 2</option>
+              <option value="Main Canteen">Main Canteen</option>
+              <option value="Sports Ground">Sports Complex / Ground</option>
+              <option value="Main Auditorium">Main Auditorium</option>
+              <option value="Campus Main Gate">Campus Main Gate</option>
+              <option value="Academic Block 1">Academic Block 1</option>
+              <option value="Academic Block 2">Academic Block 2</option>
+              <option value="Admin Block">Admin Block</option>
+              <option value="Hostel Block A">Hostel Block A</option>
+              <option value="Hostel Block B">Hostel Block B</option>
+              <option value="Parking Area">Parking Area</option>
+              <option value="Science Block">Science &amp; Workshop Block</option>
+              <option value="Other">Other Area</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="form-label" style="font-size: 0.8rem; margin-bottom: 0.25rem;">Status</label>
+            <select id="status-filter" class="form-control" style="font-size: 0.88rem; padding: 0.55rem 0.85rem;">
+              <option value="all">All (Active &amp; Resolved)</option>
+              <option value="Active" selected>Active Only</option>
+              <option value="Resolved">Resolved Cases Only</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="form-label" style="font-size: 0.8rem; margin-bottom: 0.25rem;">Sort Order</label>
+            <select id="sort-filter" class="form-control" style="font-size: 0.88rem; padding: 0.55rem 0.85rem;">
+              <option value="newest" selected>Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="date_desc">Incident Date (Recent)</option>
+              <option value="date_asc">Incident Date (Earliest)</option>
+            </select>
+          </div>
+
+          <div style="display: flex; align-items: flex-end;">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="resetSearchFilters()" style="height: 2.6rem;">
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Count Bar -->
+      <div class="flex-between" style="margin-bottom: 1.5rem;">
+        <div id="results-count" style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500;">
+          Loading items...
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <a href="/report-lost.html" class="btn btn-danger btn-sm">+ Report Lost</a>
+          <a href="/report-found.html" class="btn btn-success btn-sm">+ Report Found</a>
+        </div>
+      </div>
+
+      <!-- Items Grid -->
+      <div class="grid-3" id="items-grid">
+        <div class="loading-spinner" style="grid-column: 1 / -1;"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Universal Footer -->
+  <footer class="footer" id="footer"></footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/toast.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/navbar.js"></script>
+  <script src="/js/items.js"></script>
+</body>
+</html>

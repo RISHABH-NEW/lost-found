@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Found Item | Lost & Found Campus Portal</title>
+  <meta name="description" content="Report a found campus item to help return it to its rightful owner.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body data-page-type="report-found">
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar"></header>
+
+  <main>
+    <div class="container-narrow">
+      <div style="margin-bottom: 2rem;">
+        <a href="/dashboard.html" style="color: var(--text-muted); font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1rem;">
+          &larr; Back to Dashboard
+        </a>
+        <div class="section-badge" style="background: var(--color-found-bg); border-color: var(--color-found-border); color: #6ee7b7;">
+          🔍 Found Belonging Report
+        </div>
+        <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem; color: #fff;">
+          Report a Found Item
+        </h1>
+        <p style="color: var(--text-muted); font-size: 1rem;">
+          Did you find an unattended belonging on campus? Post the details and a clear photograph to help the owner identify it.
+        </p>
+      </div>
+
+      <div class="card" style="padding: 2.5rem; border-color: rgba(16, 185, 129, 0.25);">
+        <form id="report-item-form">
+          <div class="form-group">
+            <label for="title" class="form-label">Item Title / Name <span class="required">*</span></label>
+            <input type="text" id="title" class="form-control" placeholder="e.g. Casio Scientific Calculator (FX-991EX)" required>
+            <div class="form-helper">Keep it clear and easy to search.</div>
+          </div>
+
+          <div class="grid-2" style="gap: 1.25rem;">
+            <div class="form-group">
+              <label for="category" class="form-label">Item Category <span class="required">*</span></label>
+              <select id="category" class="form-control" required>
+                <option value="" disabled selected>Select category...</option>
+                <option value="Electronics">💻 Electronics (Phone, Charger, Laptop)</option>
+                <option value="Documents & IDs">🪪 Documents &amp; IDs (Card, License)</option>
+                <option value="Books & Stationery">📚 Books &amp; Stationery (Notebooks)</option>
+                <option value="Keys & Wallets">🔑 Keys &amp; Wallets</option>
+                <option value="Bags & Backpacks">🎒 Bags &amp; Backpacks</option>
+                <option value="Water Bottles">🍶 Water Bottles &amp; Flasks</option>
+                <option value="Clothing & Accessories">🧥 Clothing &amp; Accessories</option>
+                <option value="Other">📦 Other Belonging</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="location" class="form-label">Campus Location Found <span class="required">*</span></label>
+              <select id="location" class="form-control" required>
+                <option value="" disabled selected>Select campus zone...</option>
+                <option value="Central Library">Central Library</option>
+                <option value="Computer Lab 2">Computer Lab 2</option>
+                <option value="Main Canteen">Main Canteen / Cafeteria</option>
+                <option value="Sports Ground">Sports Complex / Ground</option>
+                <option value="Main Auditorium">Main Auditorium</option>
+                <option value="Campus Main Gate">Campus Main Gate</option>
+                <option value="Academic Block 1">Academic Block 1</option>
+                <option value="Academic Block 2">Academic Block 2</option>
+                <option value="Admin Block">Admin Block</option>
+                <option value="Hostel Block A">Hostel Block A</option>
+                <option value="Hostel Block B">Hostel Block B</option>
+                <option value="Parking Area">Parking Area</option>
+                <option value="Science Block">Science &amp; Workshop Block</option>
+                <option value="Other">Other Campus Area</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="date" class="form-label">Date Found <span class="required">*</span></label>
+            <input type="date" id="date" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="form-label">Description &amp; Safekeeping Location <span class="required">*</span></label>
+            <textarea id="description" class="form-control" placeholder="Where was it found? Where is it currently kept? (e.g. 'Deposited with Security Guard at Main Gate' or 'With me in Room 204')..." required></textarea>
+            <div class="form-helper" style="color: #6ee7b7;">
+              💡 Safety Tip: You can leave out 1 small unique detail so the claimant can verify they are the rightful owner.
+            </div>
+          </div>
+
+          <!-- Photo Upload (Highly Recommended for Found Items) -->
+          <div class="form-group">
+            <label class="form-label">Upload Photograph (Recommended)</label>
+            <div class="file-dropzone" id="file-dropzone">
+              <div class="file-dropzone-icon">📷</div>
+              <div class="file-dropzone-text">Click or drag &amp; drop an image of the found item</div>
+              <div class="file-dropzone-hint">Supports JPEG, PNG, WEBP up to 5MB</div>
+              <input type="file" id="image-input" accept="image/jpeg,image/png,image/webp" style="display: none;">
+            </div>
+
+            <div class="image-preview-wrapper" id="preview-wrapper" style="display: none;">
+              <img src="" alt="Preview" class="image-preview" id="preview-img">
+              <button type="button" class="remove-img-btn" id="remove-img-btn" title="Remove photo">&times;</button>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+            <button type="submit" class="btn btn-success btn-lg" style="flex: 2;">
+              🔍 Submit Found Report
+            </button>
+            <a href="/dashboard.html" class="btn btn-secondary btn-lg" style="flex: 1;">
+              Cancel
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Universal Footer -->
+  <footer class="footer" id="footer"></footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/toast.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/navbar.js"></script>
+  <script src="/js/forms.js"></script>
+</body>
+</html>

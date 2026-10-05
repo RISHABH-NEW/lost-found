@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard | Lost & Found Campus Portal</title>
+  <meta name="description" content="Campus user hub for managing posts, tracking items, and quick reporting.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar"></header>
+
+  <main id="dashboard-container">
+    <div class="container">
+      <!-- Welcome Header -->
+      <div class="card" style="margin-bottom: 2.5rem; background: linear-gradient(135deg, rgba(14, 25, 48, 0.95) 0%, rgba(26, 45, 82, 0.85) 100%); border-color: rgba(56, 189, 248, 0.3); padding: 2.25rem;">
+        <div class="flex-between" style="flex-wrap: wrap; gap: 1.5rem;">
+          <div>
+            <div class="section-badge" style="margin-bottom: 0.6rem;">Campus Student Hub</div>
+            <h1 style="font-size: 2.25rem; margin-bottom: 0.4rem; color: #fff;">
+              Hello, <span id="dash-user-name" style="color: var(--accent-blue);">Student</span> 👋
+            </h1>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">
+              Manage your lost and found reports, view status resolutions, and browse campus belongings.
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 0.85rem; flex-wrap: wrap;">
+            <a href="/report-lost.html" class="btn btn-danger">
+              ⚠️ Report Lost Item
+            </a>
+            <a href="/report-found.html" class="btn btn-success">
+              🔍 Report Found Item
+            </a>
+            <a href="/my-posts.html" class="btn btn-secondary">
+              Manage My Posts
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid-4" style="margin-bottom: 3rem;">
+        <div class="stat-card">
+          <div class="stat-icon">📝</div>
+          <div>
+            <div class="stat-num" id="my-stat-total">0</div>
+            <div class="stat-label">My Total Posts</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon lost">⚠️</div>
+          <div>
+            <div class="stat-num" id="my-stat-active">0</div>
+            <div class="stat-label">My Active Posts</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon resolved">✓</div>
+          <div>
+            <div class="stat-num" id="my-stat-resolved" style="color: #6ee7b7;">0</div>
+            <div class="stat-label">My Resolved Items</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon found">🏛️</div>
+          <div>
+            <div class="stat-num" id="campus-stat-total">0</div>
+            <div class="stat-label">Total Campus Items</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Action Cards -->
+      <div style="margin-bottom: 3.5rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1.25rem; color: #fff;">Quick Actions</h2>
+        <div class="grid-3">
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-size: 2rem; margin-bottom: 0.75rem;">🔍</div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #fff;">I Lost Something</h3>
+              <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.25rem;">
+                Submit details about where and when you lost your belongings so students who find them can reach out.
+              </p>
+            </div>
+            <a href="/report-lost.html" class="btn btn-outline btn-block">Report Lost Item &rarr;</a>
+          </div>
+
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-size: 2rem; margin-bottom: 0.75rem;">📦</div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #fff;">I Found an Item</h3>
+              <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.25rem;">
+                Found unattended belongings in class, lab or canteen? Post a photo to help the owner identify it.
+              </p>
+            </div>
+            <a href="/report-found.html" class="btn btn-success btn-block">Report Found Item &rarr;</a>
+          </div>
+
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-size: 2rem; margin-bottom: 0.75rem;">📋</div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #fff;">Manage My Posts</h3>
+              <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.25rem;">
+                Update descriptions, delete old notices, or mark your items as resolved once returned.
+              </p>
+            </div>
+            <a href="/my-posts.html" class="btn btn-secondary btn-block">View My Posts &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Campus Items Feed -->
+      <div>
+        <div class="flex-between" style="margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 style="font-size: 1.5rem; color: #fff; margin: 0;">Recent Campus Reports</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Freshly reported belongings across all campus locations.</p>
+          </div>
+          <a href="/search.html" class="btn btn-secondary btn-sm">Browse All &rarr;</a>
+        </div>
+
+        <div class="grid-4" id="dash-recent-feed">
+          <div class="loading-spinner" style="grid-column: 1 / -1;"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Universal Footer -->
+  <footer class="footer" id="footer"></footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/toast.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/navbar.js"></script>
+  <script src="/js/items.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

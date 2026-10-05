@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Student Account | Lost & Found Campus Portal</title>
+  <meta name="description" content="Register as a campus member to report belongings and connect with finders/owners.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar"></header>
+
+  <main style="display: flex; align-items: center; justify-content: center; min-height: 85vh;">
+    <div class="container-narrow">
+      <div class="card auth-card-wrapper" style="padding: 2.5rem; max-width: 520px; margin: 0 auto; border-color: rgba(56, 189, 248, 0.25);">
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <div class="brand-icon" style="margin: 0 auto 1rem; width: 3.25rem; height: 3.25rem; font-size: 1.5rem;">
+            🎓
+          </div>
+          <h1 style="font-size: 1.85rem; margin-bottom: 0.5rem;">Join Campus Portal</h1>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Create an account to report missing or recovered belongings on campus.
+          </p>
+        </div>
+
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name <span class="required">*</span></label>
+            <input type="text" id="name" class="form-control" placeholder="e.g. Rahul Sharma" required autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">College Email Address <span class="required">*</span></label>
+            <input type="email" id="email" class="form-control" placeholder="e.g. student@campus.edu" required autocomplete="email">
+            <div class="form-helper">Use your college or official student email address.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone" class="form-label">Contact Phone Number <span class="required">*</span></label>
+            <input type="tel" id="phone" class="form-control" placeholder="e.g. +91 9876543210" required autocomplete="tel">
+            <div class="form-helper" style="color: #6ee7b7;">
+              🛡️ Privacy Notice: Phone numbers are kept secure and shown ONLY to authenticated peers.
+            </div>
+          </div>
+
+          <div class="grid-2" style="gap: 1rem;">
+            <div class="form-group">
+              <label for="password" class="form-label">Password <span class="required">*</span></label>
+              <input type="password" id="password" class="form-control" placeholder="At least 6 characters" required autocomplete="new-password">
+            </div>
+
+            <div class="form-group">
+              <label for="confirmPassword" class="form-label">Confirm Password <span class="required">*</span></label>
+              <input type="password" id="confirmPassword" class="form-control" placeholder="Re-enter password" required autocomplete="new-password">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 1rem;">
+            Create Account &amp; Continue
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 1.75rem; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem; font-size: 0.92rem; color: var(--text-muted);">
+          Already have an account?
+          <a href="/login.html" style="font-weight: 600; color: var(--accent-blue);">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Universal Footer -->
+  <footer class="footer" id="footer"></footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/toast.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/navbar.js"></script>
+</body>
+</html>

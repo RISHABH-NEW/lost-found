@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lost & Found Portal | College Campus</title>
+  <meta name="description" content="College campus platform to report, search, and safely recover lost and found belongings.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar"></header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Background Glow Accent -->
+    <div class="glow-mesh-top"></div>
+
+    <!-- Hero Section -->
+    <section class="container" style="padding-top: 2rem; padding-bottom: 3.5rem; position: relative; z-index: 1;">
+      <div style="display: grid; grid-template-columns: 1.25fr 1fr; gap: 3rem; align-items: center;" class="hero-grid">
+        <div>
+          <div style="margin-bottom: 1.25rem;">
+            <span class="presentation-pill">
+              🎓 College Campus &bull; <strong>Lost &amp; Found Portal</strong>
+            </span>
+          </div>
+
+          <h1 style="font-size: 3.25rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; letter-spacing: -0.02em;">
+            Lost something on campus? <br>
+            <span style="background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+              Let's get it back together.
+            </span>
+          </h1>
+
+          <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem; max-width: 580px;">
+            A modern, centralized platform for students to report lost items, register found belongings, verify ownership securely, and reunite campus belongings fast.
+          </p>
+
+          <!-- Quick Search Bar -->
+          <form id="hero-search-form" style="display: flex; gap: 0.5rem; margin-bottom: 2rem; max-width: 540px;">
+            <div class="search-input-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="hero-search-input" class="form-control" placeholder="Search ID cards, bottles, calculators, keys..." autocomplete="off">
+            </div>
+            <button type="submit" class="btn btn-primary" style="padding: 0 1.5rem; height: 3.25rem;">
+              Search
+            </button>
+          </form>
+
+          <!-- Primary Call to Actions -->
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="/report-lost.html" class="btn btn-danger btn-lg">
+              ⚠️ Report Lost Item
+            </a>
+            <a href="/report-found.html" class="btn btn-success btn-lg">
+              🔍 Report Found Item
+            </a>
+            <a href="/search.html" class="btn btn-secondary btn-lg">
+              Browse All Items
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Visual Showcase -->
+        <div style="position: relative;">
+          <div class="card" style="padding: 2rem; border-color: rgba(56, 189, 248, 0.25); background: rgba(14, 23, 44, 0.75);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+              <span class="badge badge-found" style="font-size: 0.85rem;">Live Campus Recovery</span>
+              <span style="font-size: 0.82rem; color: var(--color-found);">● Active Portal</span>
+            </div>
+
+            <h3 style="font-size: 1.35rem; margin-bottom: 1rem; color: #fff;">
+              Campus Belongings Hub
+            </h3>
+
+            <!-- Mini stats preview in hero -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Total Resolved</div>
+                <div style="font-size: 1.8rem; font-weight: 800; color: #6ee7b7;" id="stat-resolved-items">0</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Total Reported</div>
+                <div style="font-size: 1.8rem; font-weight: 800; color: var(--accent-blue);" id="stat-total-items">0</div>
+              </div>
+            </div>
+
+            <!-- Flow summary steps -->
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.88rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="background: rgba(56,189,248,0.15); color: var(--accent-blue); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">1</span>
+                <span>Post item details &amp; upload photograph</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="background: rgba(56,189,248,0.15); color: var(--accent-blue); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">2</span>
+                <span>Peer student recognizes &amp; initiates contact</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="background: rgba(56,189,248,0.15); color: var(--accent-blue); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">3</span>
+                <span>Verify item in person &amp; mark as Resolved</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Campus Live Counters Section -->
+    <section class="container" style="margin-bottom: 4rem;">
+      <div class="grid-4" id="landing-stats">
+        <div class="stat-card">
+          <div class="stat-icon lost">⚠️</div>
+          <div>
+            <div class="stat-num" id="stat-lost-items">0</div>
+            <div class="stat-label">Active Lost Items</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon found">🔍</div>
+          <div>
+            <div class="stat-num" id="stat-found-items">0</div>
+            <div class="stat-label">Found Belongings</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon resolved">✓</div>
+          <div>
+            <div class="stat-num" style="color: #6ee7b7;">100%</div>
+            <div class="stat-label">Verified Handover</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🛡️</div>
+          <div>
+            <div class="stat-num">Private</div>
+            <div class="stat-label">Spam-Free Contact</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Campus Items Preview -->
+    <section class="container" style="margin-bottom: 5rem;">
+      <div class="flex-between" style="margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div class="section-badge">Campus Feed</div>
+          <h2 class="section-title" style="font-size: 2rem; text-align: left; margin: 0;">
+            Recently Reported Belongings
+          </h2>
+        </div>
+        <a href="/search.html" class="btn btn-outline">
+          View All Campus Items &rarr;
+        </a>
+      </div>
+
+      <div class="grid-3" id="recent-items-grid">
+        <div class="loading-spinner" style="grid-column: 1 / -1;"></div>
+      </div>
+    </section>
+
+    <!-- Why This Platform (From Presentation Slide 2, 3, 5, 13) -->
+    <section class="container" style="margin-bottom: 5rem;">
+      <div class="section-header">
+        <div class="section-badge">Core Advantages</div>
+        <h2 class="section-title">
+          Solving the <span>Messy Campus Notice Board</span> Problem
+        </h2>
+        <p class="section-subtitle">
+          Physical notice boards and unstructured WhatsApp groups make searching hard, compromise student privacy, and cause slow recovery.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="feature-icon-box">🏛️</div>
+          <h3 class="feature-title">One Central Database</h3>
+          <p class="feature-text">
+            All lost and found reports from the library, canteen, sports grounds, and academic blocks are collected in one organized database.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">🔒</div>
+          <h3 class="feature-title">Contact Privacy Guard</h3>
+          <p class="feature-text">
+            Personal phone numbers and contact details are hidden from public scrapers and accessible only to authenticated campus members.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">📸</div>
+          <h3 class="feature-title">Photo Verification</h3>
+          <p class="feature-text">
+            High quality photo uploads powered by Multer allow rightful owners to clearly identify their missing belongings before in-person handover.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">⚡</div>
+          <h3 class="feature-title">Instant Keyword Search</h3>
+          <p class="feature-text">
+            Quickly filter by item category, campus zone, or keywords to check if your lost item has already been turned in by someone.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">📍</div>
+          <h3 class="feature-title">Campus Zone Categorization</h3>
+          <p class="feature-text">
+            Structured location tags such as Computer Lab 2, Central Library, Main Gate, and Canteen eliminate confusion on where to search.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box">✅</div>
+          <h3 class="feature-title">Status Resolution</h3>
+          <p class="feature-text">
+            Once an item is successfully returned, the poster can mark it as Resolved with a single click, keeping the feed clean and up-to-date.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Campus Zones Quick Access -->
+    <section class="container" style="margin-bottom: 5rem;">
+      <div class="card" style="padding: 2.5rem; background: linear-gradient(135deg, rgba(14, 25, 48, 0.9) 0%, rgba(20, 36, 70, 0.8) 100%); border-color: rgba(56, 189, 248, 0.3);">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+          <h2 style="font-size: 2rem; margin-bottom: 0.75rem;">Explore Campus Belongings by Zone</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1.75rem;">
+            Click on your campus building or common spot to see what has been found or reported lost there.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.65rem; justify-content: center;">
+            <a href="/search.html?location=Central+Library" class="btn btn-secondary btn-sm">📚 Central Library</a>
+            <a href="/search.html?location=Computer+Lab+2" class="btn btn-secondary btn-sm">💻 Computer Lab 2</a>
+            <a href="/search.html?location=Main+Canteen" class="btn btn-secondary btn-sm">☕ Main Canteen</a>
+            <a href="/search.html?location=Sports+Ground" class="btn btn-secondary btn-sm">⚽ Sports Ground</a>
+            <a href="/search.html?location=Campus+Main+Gate" class="btn btn-secondary btn-sm">🚪 Campus Main Gate</a>
+            <a href="/search.html?location=Academic+Block+1" class="btn btn-secondary btn-sm">🏫 Academic Block 1</a>
+            <a href="/search.html?location=Main+Auditorium" class="btn btn-secondary btn-sm">🎭 Main Auditorium</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Universal Footer -->
+  <footer class="footer" id="footer"></footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/toast.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/navbar.js"></script>
+  <script src="/js/items.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

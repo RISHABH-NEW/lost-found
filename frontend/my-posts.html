@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage My Posts | Lost & Found Campus Portal</title>
+  <meta name="description" content="View, edit, resolve, and manage your campus lost and found reports.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar"></header>
+
+  <main>
+    <div class="container-wide">
+      <div class="flex-between" style="margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div class="section-badge">Post Management</div>
+          <h1 style="font-size: 2.25rem; margin-bottom: 0.5rem; color: #fff;">
+            My Campus Reports
+          </h1>
+          <p style="color: var(--text-muted); font-size: 1rem;">
+            Manage and update your reported belongings, mark items as resolved, or remove old posts.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem;">
+          <a href="/report-lost.html" class="btn btn-danger">+ Report Lost</a>
+          <a href="/report-found.html" class="btn btn-success">+ Report Found</a>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="grid-3" style="margin-bottom: 2.5rem;">
+        <div class="stat-card">
+          <div class="stat-icon">📑</div>
+          <div>
+            <div class="stat-num" id="stat-total">0</div>
+            <div class="stat-label">Total Posts by You</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon lost">⚠️</div>
+          <div>
+            <div class="stat-num" id="stat-active">0</div>
+            <div class="stat-label">Active / Unresolved Cases</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon resolved">✓</div>
+          <div>
+            <div class="stat-num" id="stat-resolved" style="color: #6ee7b7;">0</div>
+            <div class="stat-label">Successfully Returned</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Pills -->
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap;">
+        <button class="btn btn-secondary btn-sm post-filter-pill active" data-filter="all">All Posts</button>
+        <button class="btn btn-secondary btn-sm post-filter-pill" data-filter="Active">Active Only</button>
+        <button class="btn btn-secondary btn-sm post-filter-pill" data-filter="Resolved">Resolved Only</button>
+        <button class="btn btn-secondary btn-sm post-filter-pill" data-filter="Lost">Lost Reports</button>
+        <button class="btn btn-secondary btn-sm post-filter-pill" data-filter="Found">Found Reports</button>
+      </div>
+
+      <!-- Posts Grid -->
+      <div class="grid-3" id="my-posts-container">
+        <div class="loading-spinner" style="grid-column: 1 / -1;"></div>
+      </div>
+    </div>
+
+    <!-- Edit Post Modal -->
+    <div class="modal-overlay" id="edit-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Edit Campus Post</h3>
+          <button type="button" class="modal-close-btn" onclick="closeEditPostModal()">&times;</button>
+        </div>
+
+        <form id="edit-form">
+          <div class="modal-body">
+            <input type="hidden" id="edit-id">
+
+            <div class="form-group">
+              <label class="form-label">Item Title <span class="required">*</span></label>
+              <input type="text" id="edit-title" class="form-control" required>
+            </div>
+
+            <div class="grid-2" style="gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label">Category <span class="required">*</span></label>
+                <select id="edit-category" class="form-control" required>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Documents & IDs">Documents &amp; IDs</option>
+                  <option value="Books & Stationery">Books &amp; Stationery</option>
+                  <option value="Keys & Wallets">Keys &amp; Wallets</option>
+                  <option value="Bags & Backpacks">Bags &amp; Backpacks</option>
+                  <option value="Water Bottles">Water Bottles</option>
+                  <option value="Clothing & Accessories">Clothing &amp; Accessories</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Location <span class="required">*</span></label>
+                <select id="edit-location" class="form-control" required>
+                  <option value="Central Library">Central Library</option>
+                  <option value="Computer Lab 2">Computer Lab 2</option>
+                  <option value="Main Canteen">Main Canteen</option>
+                  <option value="Sports Ground">Sports Ground</option>
+                  <option value="Main Auditorium">Main Auditorium</option>
+                  <option value="Campus Main Gate">Campus Main Gate</option>
+                  <option value="Academic Block 1">Academic Block 1</option>
+                  <option value="Academic Block 2">Academic Block 2</option>
+                  <option value="Admin Block">Admin Block</option>
+                  <option value="Hostel Block A">Hostel Block A</option>
+                  <option value="Hostel Block B">Hostel Block B</option>
+                  <option value="Other">Other Area</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Status <span class="required">*</span></label>
+              <select id="edit-status" class="form-control" required>
+                <option value="Active">Active (Still Looking / Available)</option>
+                <option value="Resolved">Resolved (Returned to Owner)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Description <span class="required">*</span></label>
+              <textarea id="edit-description" class="form-control" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Update Photograph (Optional)</label>
+              <input type="file" id="edit-image-input" class="form-control" accept="image/jpeg,image/png,image/webp">
+              <div class="form-helper">Upload a new photo to replace the existing one.</div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeEditPostModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Universal Footer -->
+  <footer class="footer" id="footer"></footer>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/toast.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/navbar.js"></script>
+  <script src="/js/items.js"></script>
+  <script src="/js/my-posts.js"></script>
+</body>
+</html>

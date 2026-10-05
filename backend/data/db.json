@@ -1,0 +1,196 @@
+{
+  "users": [
+    {
+      "_id": "6ac38cc3dfb150bdc41abdf7",
+      "name": "Rohan Sharma",
+      "email": "rohan@campus.edu",
+      "password": "$2a$10$4K9tsqewzoM7ecfJMhe/8exi3NpbwbmKdmSU5nmprhpgfjUIdt2MG",
+      "phone": "+91 9876543210",
+      "createdAt": "2026-10-05T11:40:51.185Z"
+    },
+    {
+      "_id": "6ac38cc4dfb150bdc41abdf8",
+      "name": "Priya Sharma",
+      "email": "priya.sharma@campus.edu",
+      "password": "$2a$10$NZVftdMAxYo7wMYbkV6J7urpgPYFFF0LOgwJ.sjy4A/aJMHOayd9K",
+      "phone": "+91 9812345678",
+      "createdAt": "2026-10-05T11:40:52.646Z"
+    },
+    {
+      "_id": "6ac38cc5dfb150bdc41abdf9",
+      "name": "Rahul Verma",
+      "email": "rahul.verma@campus.edu",
+      "password": "$2a$10$3OC6tQkPANUCskCwtI6SLeDyCvDAjZIZolIwVVmaHbg.chfXO9aNK",
+      "phone": "+91 9988776655",
+      "createdAt": "2026-10-05T11:40:53.566Z"
+    },
+    {
+      "_id": "6ac38d5891fd53b53e733691",
+      "name": "Test Student",
+      "email": "test1791200598656@campus.edu",
+      "password": "$2a$10$IWk4X9MvmFr9JjfBYLvlBeMpKPjrigeRVh4ZELbFhYthHqAgr64Cy",
+      "phone": "9876543210",
+      "createdAt": "2026-10-05T11:43:20.639Z"
+    },
+    {
+      "_id": "6ac38d709b1f1b08db8d4d3b",
+      "name": "Rohan Sharma",
+      "email": "student_1791200623512@campus.edu",
+      "password": "$2a$10$ttFB2bpIYD4FXl8kbv3G5.HbKrskYFhummwHCizGIG5vG9kt21Hd2",
+      "phone": "+91 9876500001",
+      "createdAt": "2026-10-05T11:43:44.459Z"
+    },
+    {
+      "_id": "6ac38d739b1f1b08db8d4d3c",
+      "name": "Amit Patel",
+      "email": "other_1791200626176@campus.edu",
+      "password": "$2a$10$AzFyisDZvZy88ERstft6Qu2wRhsJ/2cJPls5HMDToSxGP2kAU/c6C",
+      "phone": "+91 9876500002",
+      "createdAt": "2026-10-05T11:43:47.091Z"
+    },
+    {
+      "_id": "6ac38f149fd05dc9c6ecf910",
+      "name": "Rohan Sharma",
+      "email": "student_1791201043296@campus.edu",
+      "password": "$2a$10$8VQObBSGZQ6HRXjo0xx/YeTIeMxWdknGbPSqLCbNHcC5PqJXnlVsO",
+      "phone": "+91 9876500001",
+      "createdAt": "2026-10-05T11:50:44.724Z"
+    },
+    {
+      "_id": "6ac38f199fd05dc9c6ecf911",
+      "name": "Amit Patel",
+      "email": "other_1791201048338@campus.edu",
+      "password": "$2a$10$z1eZPIxKSuRZawgOxYf0L.M25CZrChQ8pVxAb8aVpFndlsrWXTtpS",
+      "phone": "+91 9876500002",
+      "createdAt": "2026-10-05T11:50:49.453Z"
+    }
+  ],
+  "items": [
+    {
+      "_id": "6ac39410b1feb4d07950650d",
+      "title": "HELLO",
+      "description": "hello",
+      "type": "Lost",
+      "category": "Electronics",
+      "location": "Academic Block 2",
+      "date": "2026-10-05T00:00:00.000Z",
+      "imagePath": "/uploads/Screenshot_2026-10-02_045758-1791202320679-865262.png",
+      "status": "Active",
+      "postedBy": "6ac38cc3dfb150bdc41abdf7",
+      "createdAt": "2026-10-05T12:12:00.729Z",
+      "updatedAt": "2026-10-05T12:12:00.729Z"
+    },
+    {
+      "_id": "6ac38f199fd05dc9c6ecf913",
+      "title": "Apple AirPods Case (White)",
+      "description": "Found on the grass near sports ground pavilion bench.",
+      "type": "Found",
+      "category": "Electronics",
+      "location": "Sports Ground",
+      "date": "2026-10-05T11:50:49.551Z",
+      "imagePath": "/uploads/airpods_case-1791201049630-671376.png",
+      "status": "Active",
+      "postedBy": "6ac38f149fd05dc9c6ecf910",
+      "createdAt": "2026-10-05T11:50:49.674Z",
+      "updatedAt": "2026-10-05T11:50:49.674Z"
+    },
+    {
+      "_id": "6ac38d739b1f1b08db8d4d3e",
+      "title": "Apple AirPods Case (White)",
+      "description": "Found on the grass near sports ground pavilion bench.",
+      "type": "Found",
+      "category": "Electronics",
+      "location": "Sports Ground",
+      "date": "2026-10-05T11:43:47.179Z",
+      "imagePath": "/uploads/airpods_case-1791200627248-42673.png",
+      "status": "Active",
+      "postedBy": "6ac38d709b1f1b08db8d4d3b",
+      "createdAt": "2026-10-05T11:43:47.286Z",
+      "updatedAt": "2026-10-05T11:43:47.286Z"
+    },
+    {
+      "_id": "6ac38cc5dfb150bdc41abdff",
+      "title": "Wildcraft Grey College Backpack",
+      "description": "Found in the auditorium during orientation. Contains notebooks and geometry box. Owner claimed and verified ID successfully.",
+      "type": "Found",
+      "category": "Bags & Backpacks",
+      "location": "Main Auditorium",
+      "date": "2026-09-29T11:40:53.677Z",
+      "imagePath": null,
+      "status": "Resolved",
+      "postedBy": "6ac38cc5dfb150bdc41abdf9",
+      "createdAt": "2026-10-05T11:40:53.690Z",
+      "updatedAt": "2026-10-05T11:40:53.690Z"
+    },
+    {
+      "_id": "6ac38cc5dfb150bdc41abdfe",
+      "title": "Set of 3 Bike Keys with Red Honda Lanyard",
+      "description": "Found near the two-wheeler parking lot right beside the campus main entrance gate. Deposited at Security Guard Post 1.",
+      "type": "Found",
+      "category": "Keys & Wallets",
+      "location": "Campus Main Gate",
+      "date": "2026-10-04T11:40:53.662Z",
+      "imagePath": null,
+      "status": "Active",
+      "postedBy": "6ac38cc4dfb150bdc41abdf8",
+      "createdAt": "2026-10-05T11:40:53.673Z",
+      "updatedAt": "2026-10-05T11:40:53.673Z"
+    },
+    {
+      "_id": "6ac38cc5dfb150bdc41abdfd",
+      "title": "Dell 65W Type-C Laptop Charger",
+      "description": "Left my black Dell 65W USB-C charger plugged into the wall socket near row 3 in lecture hall 204.",
+      "type": "Lost",
+      "category": "Electronics",
+      "location": "Academic Block 1",
+      "date": "2026-10-01T11:40:53.647Z",
+      "imagePath": null,
+      "status": "Active",
+      "postedBy": "6ac38cc3dfb150bdc41abdf7",
+      "createdAt": "2026-10-05T11:40:53.658Z",
+      "updatedAt": "2026-10-05T11:40:53.658Z"
+    },
+    {
+      "_id": "6ac38cc5dfb150bdc41abdfc",
+      "title": "Milton 750ml Stainless Steel Bottle (Matte Blue)",
+      "description": "Found near the juice counter in the main canteen. Has a small sticker of Naruto on the cap.",
+      "type": "Found",
+      "category": "Water Bottles",
+      "location": "Main Canteen",
+      "date": "2026-10-02T11:40:53.628Z",
+      "imagePath": null,
+      "status": "Active",
+      "postedBy": "6ac38cc5dfb150bdc41abdf9",
+      "createdAt": "2026-10-05T11:40:53.642Z",
+      "updatedAt": "2026-10-05T11:40:53.642Z"
+    },
+    {
+      "_id": "6ac38cc5dfb150bdc41abdfb",
+      "title": "Casio FX-991EX Scientific Calculator",
+      "description": "Found a black Casio ClassWiz FX-991EX calculator on desk 14 after the afternoon physics lab session. Kept safely with lab assistant.",
+      "type": "Found",
+      "category": "Electronics",
+      "location": "Computer Lab 2",
+      "date": "2026-10-04T11:40:53.610Z",
+      "imagePath": null,
+      "status": "Active",
+      "postedBy": "6ac38cc4dfb150bdc41abdf8",
+      "createdAt": "2026-10-05T11:40:53.623Z",
+      "updatedAt": "2026-10-05T11:40:53.623Z"
+    },
+    {
+      "_id": "6ac38cc5dfb150bdc41abdfa",
+      "title": "College ID Card & Metro Pass",
+      "description": "Lost a blue lanyard with Student ID Card (Roll #22BCS104) and Delhi Metro Smart Card inside a transparent sleeve.",
+      "type": "Lost",
+      "category": "Documents & IDs",
+      "location": "Central Library",
+      "date": "2026-10-03T11:40:53.593Z",
+      "imagePath": null,
+      "status": "Active",
+      "postedBy": "6ac38cc3dfb150bdc41abdf7",
+      "createdAt": "2026-10-05T11:40:53.603Z",
+      "updatedAt": "2026-10-05T11:40:53.603Z"
+    }
+  ]
+}
