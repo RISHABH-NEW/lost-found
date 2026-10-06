@@ -15,9 +15,6 @@
 
   <!-- Main Content -->
   <main>
-    <!-- Background Glow Accent -->
-    <div class="glow-mesh-top"></div>
-
     <!-- Hero Section -->
     <section class="container" style="padding-top: 2rem; padding-bottom: 3.5rem; position: relative; z-index: 1;">
       <div style="display: grid; grid-template-columns: 1.25fr 1fr; gap: 3rem; align-items: center;" class="hero-grid">
@@ -30,7 +27,7 @@
 
           <h1 style="font-size: 3.25rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; letter-spacing: -0.02em;">
             Lost something on campus? <br>
-            <span style="background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            <span style="color: var(--color-soft-pink);">
               Let's get it back together.
             </span>
           </h1>
@@ -66,10 +63,10 @@
 
         <!-- Hero Visual Showcase -->
         <div style="position: relative;">
-          <div class="card" style="padding: 2rem; border-color: rgba(56, 189, 248, 0.25); background: rgba(14, 23, 44, 0.75);">
+          <div class="card" style="padding: 2rem;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
               <span class="badge badge-found" style="font-size: 0.85rem;">Live Campus Recovery</span>
-              <span style="font-size: 0.82rem; color: var(--color-found);">● Active Portal</span>
+              <span style="font-size: 0.82rem; color: var(--color-bright-purple); font-weight: 600;">● Active Portal</span>
             </div>
 
             <h3 style="font-size: 1.35rem; margin-bottom: 1rem; color: #fff;">
@@ -78,28 +75,28 @@
 
             <!-- Mini stats preview in hero -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
-              <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+              <div style="background: var(--bg-input); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
                 <div style="font-size: 0.8rem; color: var(--text-muted);">Total Resolved</div>
-                <div style="font-size: 1.8rem; font-weight: 800; color: #6ee7b7;" id="stat-resolved-items">0</div>
+                <div style="font-size: 1.8rem; font-weight: 800; color: var(--color-soft-pink);" id="stat-resolved-items">0</div>
               </div>
-              <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+              <div style="background: var(--bg-input); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
                 <div style="font-size: 0.8rem; color: var(--text-muted);">Total Reported</div>
-                <div style="font-size: 1.8rem; font-weight: 800; color: var(--accent-blue);" id="stat-total-items">0</div>
+                <div style="font-size: 1.8rem; font-weight: 800; color: var(--color-bright-purple);" id="stat-total-items">0</div>
               </div>
             </div>
 
             <!-- Flow summary steps -->
             <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.88rem;">
               <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <span style="background: rgba(56,189,248,0.15); color: var(--accent-blue); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">1</span>
+                <span style="background: var(--color-raspberry); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem;">1</span>
                 <span>Post item details &amp; upload photograph</span>
               </div>
               <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <span style="background: rgba(56,189,248,0.15); color: var(--accent-blue); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">2</span>
+                <span style="background: var(--color-muted-plum); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem;">2</span>
                 <span>Peer student recognizes &amp; initiates contact</span>
               </div>
               <div style="display: flex; align-items: center; gap: 0.75rem;">
-                <span style="background: rgba(56,189,248,0.15); color: var(--accent-blue); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">3</span>
+                <span style="background: var(--color-bright-purple); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem;">3</span>
                 <span>Verify item in person &amp; mark as Resolved</span>
               </div>
             </div>
@@ -130,7 +127,7 @@
         <div class="stat-card">
           <div class="stat-icon resolved">✓</div>
           <div>
-            <div class="stat-num" style="color: #6ee7b7;">100%</div>
+            <div class="stat-num" style="color: var(--color-soft-pink);">100%</div>
             <div class="stat-label">Verified Handover</div>
           </div>
         </div>
@@ -164,7 +161,7 @@
       </div>
     </section>
 
-    <!-- Why This Platform (From Presentation Slide 2, 3, 5, 13) -->
+    <!-- Why This Platform -->
     <section class="container" style="margin-bottom: 5rem;">
       <div class="section-header">
         <div class="section-badge">Core Advantages</div>
@@ -229,8 +226,8 @@
 
     <!-- Campus Zones Quick Access -->
     <section class="container" style="margin-bottom: 5rem;">
-      <div class="card" style="padding: 2.5rem; background: linear-gradient(135deg, rgba(14, 25, 48, 0.9) 0%, rgba(20, 36, 70, 0.8) 100%); border-color: rgba(56, 189, 248, 0.3);">
-        <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+      <div class="card" style="padding: 2.5rem; text-align: center;">
+        <div style="max-width: 680px; margin: 0 auto;">
           <h2 style="font-size: 2rem; margin-bottom: 0.75rem;">Explore Campus Belongings by Zone</h2>
           <p style="color: var(--text-muted); margin-bottom: 1.75rem;">
             Click on your campus building or common spot to see what has been found or reported lost there.

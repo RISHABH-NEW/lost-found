@@ -58,14 +58,14 @@ function renderNavbar() {
               <span class="user-name" style="max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${user.name.split(' ')[0]}</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
             </button>
-            <div id="user-dropdown" style="display: none; position: absolute; right: 0; top: 115%; width: 200px; background: #0c1527; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 0.5rem; z-index: 1001;">
+            <div id="user-dropdown" style="display: none; position: absolute; right: 0; top: 115%; width: 210px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: 0.5rem; z-index: 1001;">
               <div style="padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border-subtle); margin-bottom: 0.4rem;">
                 <div style="font-weight: 700; font-size: 0.88rem; color: #fff;">${user.name}</div>
                 <div style="font-size: 0.75rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis;">${user.email}</div>
               </div>
               <a href="/profile.html" class="nav-link" style="display: block; padding: 0.5rem 0.8rem;">Profile Settings</a>
               <a href="/my-posts.html" class="nav-link" style="display: block; padding: 0.5rem 0.8rem;">Manage My Posts</a>
-              <button onclick="logoutUser()" style="width: 100%; text-align: left; background: transparent; border: none; padding: 0.5rem 0.8rem; color: #fda4af; cursor: pointer; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: inherit;">
+              <button onclick="logoutUser()" style="width: 100%; text-align: left; background: transparent; border: none; padding: 0.5rem 0.8rem; color: var(--color-soft-pink); cursor: pointer; border-radius: var(--radius-sm); font-size: 0.88rem; font-family: inherit;">
                 Sign Out
               </button>
             </div>

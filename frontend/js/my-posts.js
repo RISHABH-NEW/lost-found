@@ -87,7 +87,7 @@ function renderFilteredPosts() {
 
       return `
         <div class="card" style="display: flex; flex-direction: column; overflow: hidden; padding: 0;">
-          <div style="height: 180px; background: #081020; position: relative;">
+          <div style="height: 180px; background: var(--bg-media); position: relative;">
             ${mediaHTML}
             <div style="position: absolute; top: 0.75rem; left: 0.75rem;">
               <span class="badge ${isLost ? 'badge-lost' : 'badge-found'}">
@@ -127,7 +127,7 @@ function renderFilteredPosts() {
               </button>
             </div>
             <div style="margin-top: 0.65rem; text-align: center;">
-              <a href="/item-details.html?id=${item._id}" style="font-size: 0.82rem; color: var(--accent-blue);">
+              <a href="/item-details.html?id=${item._id}" style="font-size: 0.82rem; color: var(--color-soft-pink);">
                 View Public Listing &rarr;
               </a>
             </div>

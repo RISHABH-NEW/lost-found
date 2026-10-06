@@ -1,62 +1,82 @@
 /* ==========================================================================
    LOST & FOUND CAMPUS PORTAL - CORE STYLESHEET
-   Design System: Deep Midnight Navy with Cyan & Electric Blue Accents
+   Design System: Deep Purple, Muted Plum, Raspberry, Soft Pink, Bright Purple
+   Exact Palette:
+     - Deep Purple:   #321A4D
+     - Muted Plum:    #654D68
+     - Raspberry:     #C72D67
+     - Soft Pink:     #F0A8C8
+     - Bright Purple: #C62BEE
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Color Palette */
-  --bg-primary: #070d19;
-  --bg-secondary: #0d1527;
-  --bg-card: rgba(18, 28, 48, 0.7);
-  --bg-card-hover: rgba(26, 40, 68, 0.85);
-  --bg-glass: rgba(15, 23, 42, 0.65);
-  --bg-input: #121c32;
+  /* Official 5-Color Reference Palette */
+  --color-deep-purple: #321A4D;
+  --color-muted-plum: #654D68;
+  --color-raspberry: #C72D67;
+  --color-soft-pink: #F0A8C8;
+  --color-bright-purple: #C62BEE;
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-focus: #38bdf8;
-  --border-glow: rgba(56, 189, 248, 0.25);
+  /* Surfaces & Backgrounds */
+  --bg-primary: #321A4D;
+  --bg-secondary: #25123A;
+  --bg-card: #25123A;
+  --bg-card-hover: #3B1F5A;
+  --bg-glass: rgba(50, 26, 77, 0.92);
+  --bg-input: #1E0C30;
+  --bg-media: #190A29;
+  --bg-footer: #1A0D2A;
 
-  --accent-cyan: #06b6d4;
-  --accent-blue: #38bdf8;
-  --accent-indigo: #6366f1;
-  --accent-gradient: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
-  --accent-gradient-glow: linear-gradient(135deg, rgba(14, 165, 233, 0.3) 0%, rgba(99, 102, 241, 0.3) 100%);
+  /* Borders & Outlines */
+  --border-subtle: #654D68;
+  --border-medium: #7A5E7E;
+  --border-focus: #C62BEE;
+  --border-glow: rgba(198, 43, 238, 0.35);
+
+  /* Brand Accents */
+  --accent-primary: #C72D67;
+  --accent-primary-hover: #B5235A;
+  --accent-secondary: #654D68;
+  --accent-highlight: #F0A8C8;
+  --accent-active: #C62BEE;
 
   /* Status Colors */
-  --color-lost: #f43f5e;
-  --color-lost-bg: rgba(244, 63, 94, 0.12);
-  --color-lost-border: rgba(244, 63, 94, 0.3);
+  --color-lost: #C72D67;
+  --color-lost-bg: rgba(199, 45, 103, 0.18);
+  --color-lost-border: #C72D67;
 
-  --color-found: #10b981;
-  --color-found-bg: rgba(16, 185, 129, 0.12);
-  --color-found-border: rgba(16, 185, 129, 0.3);
+  --color-found: #C62BEE;
+  --color-found-bg: rgba(198, 43, 238, 0.18);
+  --color-found-border: #C62BEE;
 
-  --color-resolved: #94a3b8;
-  --color-resolved-bg: rgba(148, 163, 184, 0.12);
-  --color-resolved-border: rgba(148, 163, 184, 0.25);
+  --color-resolved: #654D68;
+  --color-resolved-bg: rgba(101, 77, 104, 0.3);
+  --color-resolved-border: #654D68;
 
   /* Typography */
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
-  --text-inverse: #030712;
+  --text-main: #FFFFFF;
+  --text-heading: #FFFFFF;
+  --text-pink: #F0A8C8;
+  --text-muted: #D8C7DD;
+  --text-dim: #9E85A3;
+  --text-inverse: #321A4D;
 
   /* Font Families */
   --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Elevations & Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 24px rgba(56, 189, 248, 0.2);
+  --shadow-sm: 0 2px 8px rgba(25, 10, 41, 0.45);
+  --shadow-md: 0 8px 24px rgba(25, 10, 41, 0.6);
+  --shadow-lg: 0 16px 40px rgba(25, 10, 41, 0.75);
+  --shadow-active: 0 0 16px rgba(198, 43, 238, 0.3);
 
   /* Border Radii */
   --radius-sm: 6px;
   --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -84,11 +104,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: 
-    radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.03) 0%, transparent 60%);
-  background-attachment: fixed;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -96,19 +111,19 @@ body {
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  color: var(--text-main);
+  color: var(--text-heading);
   font-weight: 700;
   line-height: 1.25;
 }
 
 a {
-  color: var(--accent-blue);
+  color: var(--accent-highlight);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 a:hover {
-  color: #7dd3fc;
+  color: var(--color-bright-purple);
 }
 
 img {
@@ -146,19 +161,6 @@ main {
   padding-bottom: 4rem;
 }
 
-/* Background Glowing Mesh Accents */
-.glow-mesh-top {
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 400px;
-  background: radial-gradient(ellipse at center, rgba(14, 165, 233, 0.18) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
 /* Section Header Styles */
 .section-header {
   text-align: center;
@@ -171,13 +173,13 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.9rem;
+  padding: 0.35rem 0.95rem;
   border-radius: var(--radius-full);
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  color: var(--accent-blue);
-  font-size: 0.8rem;
-  font-weight: 600;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-soft-pink);
+  font-size: 0.82rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 0.85rem;
@@ -187,12 +189,11 @@ main {
   font-size: 2.25rem;
   margin-bottom: 0.75rem;
   letter-spacing: -0.02em;
+  color: var(--text-heading);
 }
 
 .section-title span {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--color-soft-pink);
 }
 
 .section-subtitle {
@@ -207,15 +208,16 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(15, 23, 42, 0.7);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
-  padding: 0.4rem 1rem;
+  padding: 0.4rem 1.1rem;
   border-radius: var(--radius-full);
   font-size: 0.85rem;
   color: var(--text-muted);
 }
+
 .presentation-pill strong {
-  color: var(--accent-blue);
+  color: var(--color-soft-pink);
 }
 
 /* Grid Layouts */
@@ -258,8 +260,10 @@ main {
 .text-center { text-align: center; }
 .text-right { text-align: right; }
 .text-muted { color: var(--text-muted); }
-.text-cyan { color: var(--accent-cyan); }
-.text-blue { color: var(--accent-blue); }
+.text-pink { color: var(--color-soft-pink); }
+.text-raspberry { color: var(--color-raspberry); }
+.text-purple { color: var(--color-bright-purple); }
+.text-plum { color: var(--color-muted-plum); }
 
 .mt-1 { margin-top: 0.5rem; }
 .mt-2 { margin-top: 1rem; }

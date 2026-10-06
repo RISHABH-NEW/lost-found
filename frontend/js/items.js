@@ -223,10 +223,10 @@ async function initItemDetailsPage() {
 
     // Image section
     const imageHTML = item.imagePath
-      ? `<div style="border-radius: var(--radius-lg); overflow: hidden; background: #070d1a; border: 1px solid var(--border-subtle); max-height: 480px; display: flex; align-items: center; justify-content: center;">
+      ? `<div style="border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-media); border: 1px solid var(--border-subtle); max-height: 480px; display: flex; align-items: center; justify-content: center;">
           <img src="${item.imagePath}" alt="${item.title}" style="max-height: 480px; width: 100%; object-fit: contain;">
         </div>`
-      : `<div style="border-radius: var(--radius-lg); background: #0c1527; border: 1px solid var(--border-subtle); height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: var(--text-dim);">
+      : `<div style="border-radius: var(--radius-lg); background: var(--bg-media); border: 1px solid var(--border-subtle); height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: var(--text-dim);">
           <span style="font-size: 4rem;">${categoryIcon}</span>
           <span>No photograph provided for this item</span>
         </div>`;
@@ -236,25 +236,25 @@ async function initItemDetailsPage() {
     if (isAuth) {
       const poster = item.postedBy || {};
       contactHTML = `
-        <div class="card" style="background: rgba(14, 25, 48, 0.85); border-color: rgba(56, 189, 248, 0.3);">
+        <div class="card" style="background: var(--bg-card); border-color: var(--border-subtle);">
           <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
-            <div class="brand-icon" style="width: 2.5rem; height: 2.5rem; font-size: 1.1rem;">
+            <div class="brand-icon" style="width: 2.5rem; height: 2.5rem; font-size: 1.1rem; background: var(--color-raspberry);">
               👤
             </div>
             <div>
               <h4 style="margin: 0; font-size: 1.05rem;">Posted by ${poster.name || 'Student'}</h4>
-              <span style="font-size: 0.8rem; color: var(--color-found);">✓ Verified Campus Student</span>
+              <span style="font-size: 0.8rem; color: var(--color-bright-purple);">✓ Verified Campus Student</span>
             </div>
           </div>
 
           <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; font-size: 0.95rem;">
-            <div style="display: flex; justify-content: space-between; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.03); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            <div style="display: flex; justify-content: space-between; padding: 0.6rem 0.8rem; background: var(--bg-input); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
               <span style="color: var(--text-muted);">📧 Email:</span>
               <strong><a href="mailto:${poster.email}">${poster.email}</a></strong>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.03); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            <div style="display: flex; justify-content: space-between; padding: 0.6rem 0.8rem; background: var(--bg-input); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
               <span style="color: var(--text-muted);">📞 Phone:</span>
-              <strong style="color: var(--accent-blue);">${poster.phone}</strong>
+              <strong style="color: var(--color-soft-pink);">${poster.phone}</strong>
             </div>
           </div>
 
@@ -270,7 +270,7 @@ async function initItemDetailsPage() {
       `;
     } else {
       contactHTML = `
-        <div class="card" style="background: rgba(14, 25, 48, 0.85); border-color: rgba(244, 63, 94, 0.25); text-align: center; padding: 2rem 1.5rem;">
+        <div class="card" style="background: var(--bg-card); border-color: var(--border-subtle); text-align: center; padding: 2rem 1.5rem;">
           <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">🔒</div>
           <h4 style="margin-bottom: 0.5rem; color: #fff;">Contact Details Protected</h4>
           <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.25rem;">
@@ -287,7 +287,7 @@ async function initItemDetailsPage() {
     let ownerControlsHTML = '';
     if (isOwner) {
       ownerControlsHTML = `
-        <div class="card" style="margin-top: 1.5rem; border-color: rgba(99, 102, 241, 0.4); background: rgba(18, 22, 45, 0.9);">
+        <div class="card" style="margin-top: 1.5rem; border-color: var(--border-subtle); background: var(--bg-card);">
           <div class="flex-between" style="flex-wrap: wrap; gap: 1rem;">
             <div>
               <h4 style="color: #fff; margin-bottom: 0.25rem;">Post Management (Owner)</h4>
@@ -347,7 +347,7 @@ async function initItemDetailsPage() {
               </div>
               <div style="display: flex; justify-content: space-between;">
                 <span style="color: var(--text-muted);">📍 Campus Location:</span>
-                <strong style="color: var(--accent-blue);">${item.location}</strong>
+                <strong style="color: var(--color-soft-pink);">${item.location}</strong>
               </div>
               <div style="display: flex; justify-content: space-between;">
                 <span style="color: var(--text-muted);">📅 Date ${isLost ? 'Lost' : 'Found'}:</span>

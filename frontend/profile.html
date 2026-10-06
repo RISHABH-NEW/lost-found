@@ -52,7 +52,7 @@
           <div class="form-group">
             <label for="profile-phone" class="form-label">Contact Phone Number <span class="required">*</span></label>
             <input type="tel" id="profile-phone" class="form-control" required>
-            <div class="form-helper" style="color: #6ee7b7;">
+            <div class="form-helper" style="color: var(--color-soft-pink);">
               🛡️ Protected: Only logged-in students can view your phone number for handover.
             </div>
           </div>
@@ -61,7 +61,7 @@
             <button type="submit" class="btn btn-primary btn-lg" style="flex: 2;">
               Save Profile Changes
             </button>
-            <button type="button" class="btn btn-secondary btn-lg" onclick="logoutUser()" style="flex: 1; color: #fda4af;">
+            <button type="button" class="btn btn-secondary btn-lg" onclick="logoutUser()" style="flex: 1; color: var(--color-soft-pink);">
               Sign Out
             </button>
           </div>
@@ -69,7 +69,7 @@
       </div>
 
       <!-- Security Info Card -->
-      <div class="card" style="padding: 1.75rem; background: rgba(14, 25, 48, 0.6);">
+      <div class="card" style="padding: 1.75rem;">
         <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 0.65rem;">🔒 Account Security &amp; Privacy</h4>
         <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">
           Your password is cryptographic-grade encrypted using bcrypt with salt rounds. Session tokens are signed via JWT. Your phone number is never exposed in public search results and is protected from web crawlers.
